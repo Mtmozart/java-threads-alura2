@@ -102,3 +102,17 @@ Para entender melhor os locks, recomenda-se a leitura do artigo Enabling Transac
 
 Experimente cada tipo de lock para entender suas variações. Praticando, cada uma das mudanças fica mais clara, permitindo que você aplique esse conhecimento no dia a dia.
 
+- Para podermos utilizar o Asynchronism (Assincronismo), ou seja, criar Threads diferentes, precisamos habilitar uma função na nossa classe principal.
+```Java
+@SpringBootApplication
+@EnableAsync
+public class AdopetStoreApplication {}
+
+// Adiciono o async onde quero:
+@Async
+public void enviar(PedidoDTO dto, Usuario usuario){
+
+
+```
+
+Link para congifigurar e-mail: https://cursos.alura.com.br/course/java-threads-criar-gerenciar-aplicar-spring/task/151428
