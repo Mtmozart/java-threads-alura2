@@ -116,3 +116,9 @@ public void enviar(PedidoDTO dto, Usuario usuario){
 ```
 
 Link para congifigurar e-mail: https://cursos.alura.com.br/course/java-threads-criar-gerenciar-aplicar-spring/task/151428
+
+## Entendo melho o método asyn.
+
+O Spring naturalmente tem um estrutura chamada bloqueante, em cada requisição é criada uma nova thread,  nessa sitaução o async faz a libreção das threads do Spring.
+
+São envios paralelos, desovulpando a threads, deixando o código mais peformático.
