@@ -151,3 +151,48 @@ public class AsyncConfiguration {
 
 //passo o parâmetro onde quero mudar:    @Async("asyncExecutor")
 ```
+- Um pool de threads é um objeto que trabalha no gerenciamento das threads. Por exemplo: suponha que você quer executar uma ação que precisa de 5 threads, porém, só tem 3 no sistema operacional. Você pode escolher como distribuir as tarefas da melhor forma possível.
+- Para sabe mais:
+- # Executors e Definição de Pools de Threads em Java
+
+Este documento descreve os diferentes tipos de executors disponíveis em Java para gerenciar pools de threads e como definir suas configurações.
+
+## SingleThreadExecutor
+
+O SingleThreadExecutor executa uma tarefa de cada vez, útil para tarefas sequenciais.
+
+```java
+
+ExecutorService executor = Executors.newSingleThreadExecutor();
+executor.execute(() -> {
+    System.out.println("Uma tarefa simples executada pelo SingleThreadExecutor!");
+});
+executor.shutdown();
+```
+
+FixedThreadPool
+
+O FixedThreadPool permite especificar um número fixo de threads para executar tarefas simultaneamente.
+
+```java
+
+int numberOfThreads = 4;
+ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
+executor.execute(() -> System.out.println("Tarefa 1"));
+        executor.execute(() -> System.out.println("Tarefa 2"));
+// ... adicione mais tarefas conforme necessário
+        executor.shutdown();
+
+```
+O CachedThreadPool ajusta dinamicamente o número de threads com base na demanda das tarefas.
+```java
+
+ExecutorService executor = Executors.newCachedThreadPool();
+executor.execute(() -> System.out.println("Tarefa que pode precisar de muitos threads!"));
+        executor.shutdown();
+
+
+```
+
+  ThreadPoolTaskExecutor
+  Usado para configurações mais avançadas, e oferece mais métodos adicionais.
