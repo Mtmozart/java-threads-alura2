@@ -204,3 +204,24 @@ No artigo a seguir, obtemos várias informações sobre o agendamento de tarefas
 
 - https://www.alura.com.br/artigos/agendando-tarefas-com-scheduled-do-spring?_gl=1*s7hvgz*_ga*MTE1MzA5MDM2LjE2OTgzNjE0NDA.*_ga_1EPWSW3PCS*MTcxMDg2NDIwNy4zMDUuMS4xNzEwODY2OTk3LjAuMC4w*_fplc*RnpJTXdSQmYxJTJGRDQ4d2lySk9pUFV6eCUyRkRWRnN1Sk9DYmlLWDRJZmVpRDJqJTJCUUE1Y09POFZ6NHFYZ3JOZlA2NnFJWUpaRVMycHZnRlR4aE1JbG5LQTdqenA5eTUyaFl6cjUzd1ZSSyUyRmhJczdaa3NRRVRiOUFNJTJGb3huUklEdyUzRCUzRA..#usando-o-cron-no-scheduled
 
+- Em casos em que eu quero passar algum parâmetro eu uso o CompletableFuture, Passando o parÂmetro dentro, e o retono co CompletableFuture.completedFuture(parâmetro)
+```java
+@Async
+public CompletableFuture<RelatorioFaturamento> faturamentoObtido() {
+  var dataOntem = LocalDate.now().minusDays(1);
+  var faturamentoTotal = pedidoRepository.faturamentoTotalDoDia(dataOntem);
+
+  var estatisticas = pedidoRepository.faturamentoTotalDoDiaPorCategoria(dataOntem);
+
+  return CompletableFuture.completedFuture(new RelatorioFaturamento(faturamentoTotal, estatisticas));
+  
+  //atenção, boa prática de uso de método para melhorar aguardar que a threads estejam completas, feita onde é chamda, in casu, no agendamento service. 
+  CompletableFuture.allOf(estoqueZerado, faturamento).join();
+}
+```
+
+CompletableFuture:
+Este documento aborda o uso do CompletableFuture em Java para recuperar retornos de threads. O CompletableFuture é uma extensão do conceito de Future, oferecendo mais métodos e facilitando o tratamento de exceções. Recomenda-se o uso do método join() para evitar erros de sincronização em operações assíncronas. É importante entender os métodos, tratamentos de erros e boas práticas ao utilizar CompletableFuture.
+Link: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
+- É uma boa prática utilizar método para sicronizar as threads.
+
