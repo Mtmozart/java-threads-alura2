@@ -185,14 +185,22 @@ executor.execute(() -> System.out.println("Tarefa 1"));
 
 ```
 O CachedThreadPool ajusta dinamicamente o número de threads com base na demanda das tarefas.
-```java
 
+```java
 ExecutorService executor = Executors.newCachedThreadPool();
 executor.execute(() -> System.out.println("Tarefa que pode precisar de muitos threads!"));
         executor.shutdown();
-
-
 ```
 
   ThreadPoolTaskExecutor
   Usado para configurações mais avançadas, e oferece mais métodos adicionais.
+  
+outro ponto: @EnableScheduling --> permite que tarefas sejam executados enquanto o programa continua rodando
+
+- Método de agendamento de envio de e-mail:  @Scheduled(cron = "0 26 12 * * *") segundos minutos horas dia mes ano e o método sempre dever do tipo void e com parâmetros.
+
+
+No artigo a seguir, obtemos várias informações sobre o agendamento de tarefas, inclusive sobre os diversos parâmetros do @Scheduled e as formas de utilizar o cron. A leitura vale muito a pena!
+
+- https://www.alura.com.br/artigos/agendando-tarefas-com-scheduled-do-spring?_gl=1*s7hvgz*_ga*MTE1MzA5MDM2LjE2OTgzNjE0NDA.*_ga_1EPWSW3PCS*MTcxMDg2NDIwNy4zMDUuMS4xNzEwODY2OTk3LjAuMC4w*_fplc*RnpJTXdSQmYxJTJGRDQ4d2lySk9pUFV6eCUyRkRWRnN1Sk9DYmlLWDRJZmVpRDJqJTJCUUE1Y09POFZ6NHFYZ3JOZlA2NnFJWUpaRVMycHZnRlR4aE1JbG5LQTdqenA5eTUyaFl6cjUzd1ZSSyUyRmhJczdaa3NRRVRiOUFNJTJGb3huUklEdyUzRCUzRA..#usando-o-cron-no-scheduled
+
