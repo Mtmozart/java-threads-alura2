@@ -122,3 +122,32 @@ Link para congifigurar e-mail: https://cursos.alura.com.br/course/java-threads-c
 O Spring naturalmente tem um estrutura chamada bloqueante, em cada requisição é criada uma nova thread,  nessa sitaução o async faz a libreção das threads do Spring.
 
 São envios paralelos, desovulpando a threads, deixando o código mais peformático.
+
+## O Spring me permitir utiolizar threads e controla-las
+
+Exemplo de como controlar, não esquecendo de passar a configuração configuration.
+
+O método cria várias threads e os gerencia, conectanco com o banco de dados.    
+
+```Java
+@Configuration
+public class AsyncConfiguration {
+    @Bean
+    public Executor asyncExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        //mínimo de threads
+        executor.setCorePoolSize(3);
+        //máximo de threads
+        executor.setMaxPoolSize(3);
+        //capacidade máxima da fila
+        executor.setQueueCapacity(100);
+        //nome da thread
+        executor.setThreadNamePrefix("AsynchThread-");
+        executor.initialize();
+        return executor;
+    }
+}
+
+
+//passo o parâmetro onde quero mudar:    @Async("asyncExecutor")
+```
