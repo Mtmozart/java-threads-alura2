@@ -225,3 +225,15 @@ Este documento aborda o uso do CompletableFuture em Java para recuperar retornos
 Link: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
 - É uma boa prática utilizar método para sicronizar as threads.
 
+# Try-with-resources
+O try-with-resources é uma construção introduzida no Java 7 para simplificar e garantir a gestão adequada de recursos que precisam ser fechados após o uso, como arquivos, conexões de rede ou objetos que alocam memória.
+
+A principal ideia por trás do try-with-resources é garantir que os recursos sejam fechados corretamente, mesmo em casos de exceção durante a execução do bloco try, sem a necessidade de escrever código adicional no bloco finally.
+
+```java
+try (Recurso1 recurso1 = new Recurso1(); Recurso2 recurso2 = new Recurso2();) {
+        // código que utiliza os recursos
+        } catch (Excecao e) {
+        // tratamento de exceção, se necessário
+        }
+```
