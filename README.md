@@ -225,6 +225,10 @@ Este documento aborda o uso do CompletableFuture em Java para recuperar retornos
 Link: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
 - É uma boa prática utilizar método para sicronizar as threads.
 
+# Trehads virtuals no springboot:
+- Como ativar: spring.threads.virtual.enabled=true
+- 
+
 # Try-with-resources
 O try-with-resources é uma construção introduzida no Java 7 para simplificar e garantir a gestão adequada de recursos que precisam ser fechados após o uso, como arquivos, conexões de rede ou objetos que alocam memória.
 
