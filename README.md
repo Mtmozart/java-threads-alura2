@@ -1,7 +1,3 @@
-Aqui está uma sugestão de README com mais detalhes sobre Threads em Java, explicações mais profundas e exemplos
-avançados:
-
----
 
 # Gerenciamento de Threads e Concorrência em Java
 
