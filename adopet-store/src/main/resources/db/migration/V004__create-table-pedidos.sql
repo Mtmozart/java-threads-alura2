@@ -4,7 +4,7 @@ CREATE TABLE pedidos(
     data DATE NOT NULL,
 
     PRIMARY KEY(id),
-    CONSTRAINT PEDIDOS_FK_USUARIO FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+        CONSTRAINT PEDIDOS_FK_USUARIO FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
 );
 
 CREATE TABLE itens_pedidos(
